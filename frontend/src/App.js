@@ -1,40 +1,80 @@
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-import { HOME } from "@/constants/testIds";
+import { Toaster } from "@/components/ui/sonner";
+import Nav from "@/components/portfolio/Nav";
+import Hero from "@/components/portfolio/Hero";
+import About from "@/components/portfolio/About";
+import Skills from "@/components/portfolio/Skills";
+import Journey from "@/components/portfolio/Journey";
+import Projects from "@/components/portfolio/Projects";
+import Certifications from "@/components/portfolio/Certifications";
+import Contact from "@/components/portfolio/Contact";
+import Footer from "@/components/portfolio/Footer";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
+function CustomCursor() {
+  const [pos, setPos] = useState({ x: -100, y: -100 });
+  const [hovering, setHovering] = useState(false);
 
   useEffect(() => {
-    helloWorldApi();
+    const move = (e) => setPos({ x: e.clientX, y: e.clientY });
+    const enter = (e) => {
+      if (e.target.closest("a, button, [role='button'], input, textarea")) setHovering(true);
+    };
+    const leave = () => setHovering(false);
+    window.addEventListener("mousemove", move);
+    window.addEventListener("mouseover", enter);
+    window.addEventListener("mouseout", leave);
+    return () => {
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mouseover", enter);
+      window.removeEventListener("mouseout", leave);
+    };
   }, []);
 
   return (
-    <div>
-      <header className="App-header">
-        <a
-          data-testid={HOME.emergentLink}
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
+    <>
+      <div
+        className="hidden md:block fixed pointer-events-none z-[100] rounded-full mix-blend-difference transition-transform duration-150"
+        style={{
+          left: pos.x,
+          top: pos.y,
+          width: hovering ? 40 : 12,
+          height: hovering ? 40 : 12,
+          transform: "translate(-50%, -50%)",
+          background: "#00F0FF",
+        }}
+      />
+      <div
+        className="hidden md:block fixed pointer-events-none z-[99] rounded-full transition-transform"
+        style={{
+          left: pos.x,
+          top: pos.y,
+          width: 40,
+          height: 40,
+          transform: "translate(-50%, -50%)",
+          border: "1px solid rgba(0,240,255,0.35)",
+        }}
+      />
+    </>
+  );
+}
+
+const Portfolio = () => {
+  return (
+    <div className="relative">
+      <CustomCursor />
+      <Nav />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Journey />
+        <Projects />
+        <Certifications />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 };
@@ -44,11 +84,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
+          <Route path="/" element={<Portfolio />} />
         </Routes>
       </BrowserRouter>
+      <Toaster theme="dark" position="bottom-right" richColors />
     </div>
   );
 }
