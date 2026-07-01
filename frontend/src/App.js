@@ -6,7 +6,6 @@ import Nav from "@/components/portfolio/Nav";
 import Hero from "@/components/portfolio/Hero";
 import About from "@/components/portfolio/About";
 import Skills from "@/components/portfolio/Skills";
-import Journey from "@/components/portfolio/Journey";
 import Projects from "@/components/portfolio/Projects";
 import Certifications from "@/components/portfolio/Certifications";
 import Contact from "@/components/portfolio/Contact";
@@ -69,7 +68,6 @@ const Portfolio = () => {
         <Hero />
         <About />
         <Skills />
-        <Journey />
         <Projects />
         <Certifications />
         <Contact />
