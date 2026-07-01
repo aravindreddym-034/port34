@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Marquee from "react-fast-marquee";
-import { Award, BookOpen } from "lucide-react";
+import { Award, BookOpen, ExternalLink } from "lucide-react";
 import { CERTIFICATIONS, LEARNING } from "../../data/portfolio";
 
 export default function Certifications() {
@@ -54,27 +54,35 @@ export default function Certifications() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {CERTIFICATIONS.map((c, i) => (
-            <motion.div
-              key={c.name}
+            <motion.a
+              key={i}
+              href={c.url}
+              target="_blank"
+              rel="noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ x: 6 }}
-              className="glass-card rounded-2xl p-5 flex items-center gap-4 hover:border-cyan-400/40 transition-colors"
+              className="group glass-card rounded-2xl p-5 flex items-center gap-4 hover:border-cyan-400/40 transition-colors"
               data-testid={`cert-${i}`}
             >
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 grid place-items-center border border-white/10">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 grid place-items-center border border-white/10 shrink-0">
                 <Award className="w-5 h-5 text-cyan-300" />
               </div>
-              <div className="flex-1">
-                <h3 className="font-space font-semibold text-white">{c.name}</h3>
-                <p className="text-sm text-zinc-500 font-manrope">{c.issuer}</p>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-space font-semibold text-white leading-tight group-hover:text-cyan-300 transition-colors">
+                  {c.name}
+                </h3>
+                <p className="text-sm text-zinc-500 font-manrope mt-0.5">{c.issuer}</p>
               </div>
-              <span className="font-mono-code text-xs text-cyan-300 px-3 py-1 rounded-full border border-cyan-400/20 bg-cyan-400/5">
-                {c.year}
-              </span>
-            </motion.div>
+              <div className="flex items-center gap-2 shrink-0">
+                <span className="font-mono-code text-xs text-cyan-300 px-3 py-1 rounded-full border border-cyan-400/20 bg-cyan-400/5">
+                  {c.year}
+                </span>
+                <ExternalLink className="w-4 h-4 text-zinc-500 group-hover:text-cyan-300 transition-colors" />
+              </div>
+            </motion.a>
           ))}
         </div>
       </div>

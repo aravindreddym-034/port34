@@ -221,10 +221,30 @@ export const PROJECTS = [
 ];
 
 export const CERTIFICATIONS = [
-  { name: "SQL Certification", issuer: "HackerRank", year: "2024" },
-  { name: "Power BI Certification", issuer: "Microsoft Learn", year: "2024" },
-  { name: "Python for Data Science", issuer: "IBM / Coursera", year: "2024" },
-  { name: "Data Analytics Foundations", issuer: "Google", year: "2025" },
+  {
+    name: "100 Days of Code: The Complete Python Pro Bootcamp",
+    issuer: "Udemy · Dr. Angela Yu",
+    year: "2026",
+    url: "https://ude.my/UC-c2b0ad3e-58b4-4503-b85f-273611392292",
+  },
+  {
+    name: "Claude 101 · Certificate of Completion",
+    issuer: "Anthropic",
+    year: "2026",
+    url: "https://verify.skilljar.com/c/2juzneaazvyj",
+  },
+  {
+    name: "Forage Virtual Experience Program",
+    issuer: "The Forage",
+    year: "2025",
+    url: "https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_McYunpnCu9G5JFF5q_1753011203662_completion_certificate.pdf",
+  },
+  {
+    name: "Forage Virtual Experience Program",
+    issuer: "The Forage",
+    year: "2025",
+    url: "https://www.theforage.com/completion-certificates/ZMJPTEo6JENkwjt3R",
+  },
 ];
 
 export const LEARNING = [
