@@ -1,0 +1,148 @@
+{
+  "theme": "dark",
+  "archetype": "Hybrid of 5 (Luxury/Apple Aesthetics) and 7 (Electric & Neon)",
+  "design_philosophy": "A high-end, award-winning portfolio blending Apple's refined glassmorphism with Web3-style glowing 3D aesthetics. It positions the Data Analyst as a premium tech professional through immersive WebGL data visualizations, deep contrast, and precision micro-interactions.",
+  "colors": {
+    "background": {
+      "base": "#05050A",
+      "surface": "#0A0B10",
+      "glass": "rgba(255, 255, 255, 0.03)"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A1A1AA",
+      "muted": "#71717A",
+      "accent": "#00F0FF"
+    },
+    "accents": {
+      "cyan": "#00F0FF",
+      "purple": "#7B2CBF",
+      "blue": "#007AFF",
+      "glow_cyan": "rgba(0, 240, 255, 0.4)",
+      "glow_purple": "rgba(123, 44, 191, 0.4)"
+    }
+  },
+  "typography": {
+    "headings": {
+      "family": "Space Grotesk, sans-serif",
+      "weights": ["700", "500"],
+      "tracking": "tracking-tighter",
+      "color": "text-white"
+    },
+    "body": {
+      "family": "Manrope, sans-serif",
+      "weights": ["400", "500"],
+      "tracking": "tracking-normal",
+      "color": "text-zinc-400"
+    },
+    "mono": {
+      "family": "JetBrains Mono, monospace",
+      "weights": ["400"],
+      "usage": "Use for tech stack pills, data metrics, and small labels.",
+      "color": "text-cyan-400"
+    }
+  },
+  "surface_styles": {
+    "glass_card": "bg-white/[0.02] backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-2xl",
+    "glow_border": "relative overflow-hidden before:absolute before:-inset-[1px] before:bg-gradient-to-r before:from-[#00F0FF] before:via-[#7B2CBF] before:to-[#007AFF] before:rounded-2xl before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 after:absolute after:inset-[1px] after:bg-[#0A0B10] after:rounded-[15px] after:z-[-1]",
+    "neo_brutal_tech": "bg-[#0A0B10] border border-[#00F0FF]/30 hover:border-[#00F0FF] hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all rounded-lg"
+  },
+  "animations": {
+    "scroll": "Use Lenis for premium smooth momentum scrolling.",
+    "page_transitions": "Framer Motion AnimatePresence with a subtle fade and 10px Y-axis lift.",
+    "hover_effects": "Cards tilt slightly using Framer Motion's useMotionTemplate. Buttons have an inner glow sweep.",
+    "background_3d": "React Three Fiber canvas with floating Points/Particles representing a neural network or data cluster."
+  },
+  "layout_and_spacing": {
+    "grid": "Bento Grid (Tetris Mode) for Projects and Skills.",
+    "padding": "Generous spacing: sections should have py-24 or py-32. Containers max-w-7xl px-6 md:px-12.",
+    "alignment": "Left-aligned text for readability, asymmetrical layouts to create tension."
+  },
+  "media": {
+    "hero_avatar": {
+      "url": "https://images.unsplash.com/photo-1772371272152-d1806d4351e0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwaWxsdXN0cmF0aW9uJTIwcG9ydHJhaXQlMjBib3l8ZW58MHx8fHwxNzgyODgyNDU3fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Smiling cartoon/anime boy in purple hoodie, perfect for the modern stylized avatar requested."
+    },
+    "project_sql": {
+      "url": "https://images.unsplash.com/photo-1644088379091-d574269d422f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMGRhdGElMjB2aXN1YWxpemF0aW9uJTIwZGFya3xlbnwwfHx8fDE3ODI4ODI0NTd8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract blue data network lines"
+    },
+    "project_powerbi": {
+      "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBkYXNoYm9hcmQlMjBkYXJrJTIwbW9kZXxlbnwwfHx8fDE3ODI4ODI0NTd8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Dark mode modern performance dashboard on a screen"
+    },
+    "project_ml": {
+      "url": "https://images.unsplash.com/photo-1534156039819-c89418369a4f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGRhdGElMjB2aXN1YWxpemF0aW9uJTIwZGFya3xlbnwwfHx8fDE3ODI4ODI0NTd8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Purple and pink tech abstract lights"
+    }
+  },
+  "sections_blueprint": {
+    "hero": {
+      "layout": "Min-h-screen relative flex items-center justify-center overflow-hidden.",
+      "background": "Absolute inset-0 z-0. React Three Fiber <Canvas> rendering a constellation of glowing data nodes (Points) that slowly rotate and slightly repel from the mouse cursor.",
+      "content": "Z-10 relative max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center.",
+      "left_col": "col-span-1 lg:col-span-7 space-y-6.",
+      "headline": "<h1 className='text-5xl md:text-7xl font-bold tracking-tighter text-white font-space'>Aravind Reddy M</h1>",
+      "typing_effect": "Framer Motion powered typing text looping through: 'Data Analyst', 'SQL & Python Expert', 'Power BI Specialist', 'Machine Learning Explorer'. Text color: bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500.",
+      "description": "<p className='text-xl text-zinc-400 font-manrope max-w-lg'>Transforming raw data into meaningful insights through analytics, visualization, and predictive modeling.</p>",
+      "ctas": "Two buttons: Primary (View Projects - solid white text, glow border), Secondary (Contact Me - glassmorphism). Include Social icons (GitHub, LinkedIn).",
+      "right_col": "col-span-1 lg:col-span-5 flex justify-center.",
+      "avatar_display": "Use the hero_avatar image inside a glassmorphism circular or rounded-2xl frame. Add a floating animation using Framer Motion (y: [-10, 10, -10]). Add a subtle drop-shadow with cyan/purple glow."
+    },
+    "about": {
+      "layout": "py-32 px-6",
+      "title": "Who Am I?",
+      "design": "Asymmetrical layout. Large typographic quotes on the left, detailed body text on the right. Text reveals on scroll (opacity & y-transform)."
+    },
+    "skills": {
+      "layout": "py-24 px-6 relative",
+      "features": [
+        "Animated Pill Grid: Display tech stack (SQL, Python, Power BI, Machine Learning, Statistics, Excel, Tableau) as glassmorphism pills.",
+        "Interactive 3D Element: A rotating Sphere in R3F mapped with tech logos or just a wireframe globe acting as a background element behind the skills grid."
+      ]
+    },
+    "experience_journey": {
+      "layout": "py-24",
+      "design": "Since there's no professional experience, design a 'Learning & Growth Journey' timeline. Vertical line with glowing cyan dots. Each entry is a glass card describing a milestone (e.g., 'Mastered SQL & Window Functions', 'Built First ML Model')."
+    },
+    "projects": {
+      "layout": "py-32 Bento Grid Layout",
+      "design": "Grid columns: 1 (mobile), 2 or 3 (desktop). Each card uses 'glow_border' surface style.",
+      "card_anatomy": [
+        "Image placeholder (use media urls) at the top, max-h-48 object-cover, wrapped in overflow-hidden.",
+        "Hover effect on image: scale up slightly.",
+        "Content: Title (Space Grotesk), Description, Tech Stack Pills (JetBrains Mono text-xs).",
+        "Footer: 'Live Demo' and 'GitHub' icon buttons."
+      ],
+      "mock_data": [
+        {"title": "SQL Business Analysis", "tech": "SQL, PostgreSQL", "img": "project_sql"},
+        {"title": "Power BI Sales Dashboard", "tech": "Power BI, DAX", "img": "project_powerbi"},
+        {"title": "Customer Churn ML Prediction", "tech": "Python, Scikit-learn", "img": "project_ml"}
+      ]
+    },
+    "learning_and_certifications": {
+      "layout": "py-24 overflow-hidden",
+      "design": "Use react-fast-marquee for 'What I'm Learning' (Continuous scrolling text in JetBrains Mono, outlined text style). Certifications displayed as sleek horizontal glass tickets."
+    },
+    "contact": {
+      "layout": "py-32 relative",
+      "design": "Shadcn UI form customized with dark mode aesthetics. Inputs have bg-white/5, border-white/10, focus:border-cyan-400. Embedded inside a glassmorphism panel. Social links below the form."
+    }
+  },
+  "testing": {
+    "rules": "All interactive elements (buttons, links, form inputs) must include data-testid attributes (e.g., data-testid='hero-cta-projects', data-testid='contact-form-submit')."
+  },
+  "dependencies": {
+    "required": [
+      "framer-motion",
+      "@react-three/fiber",
+      "@react-three/drei",
+      "three",
+      "react-fast-marquee",
+      "@studio-freight/react-lenis",
+      "@phosphor-icons/react",
+      "clsx",
+      "tailwind-merge"
+    ]
+  }
+}
