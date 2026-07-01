@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
-import Nav from "@/components/portfolio/Nav";
-import Hero from "@/components/portfolio/Hero";
-import About from "@/components/portfolio/About";
+import DashboardLayout from "@/components/portfolio/DashboardLayout";
+import Overview from "@/components/portfolio/Overview";
 import Skills from "@/components/portfolio/Skills";
 import Projects from "@/components/portfolio/Projects";
+
 import Certifications from "@/components/portfolio/Certifications";
 import Contact from "@/components/portfolio/Contact";
-import Footer from "@/components/portfolio/Footer";
 
 function CustomCursor() {
   const [pos, setPos] = useState({ x: -100, y: -100 });
@@ -34,7 +32,7 @@ function CustomCursor() {
   return (
     <>
       <div
-        className="hidden md:block fixed pointer-events-none z-[100] rounded-full mix-blend-difference transition-transform duration-150"
+        className="hidden md:block fixed pointer-events-none z-[100] rounded-full mix-blend-difference transition-all duration-150 ease-out"
         style={{
           left: pos.x,
           top: pos.y,
@@ -45,12 +43,12 @@ function CustomCursor() {
         }}
       />
       <div
-        className="hidden md:block fixed pointer-events-none z-[99] rounded-full transition-transform"
+        className="hidden md:block fixed pointer-events-none z-[99] rounded-full transition-all duration-100 ease-out"
         style={{
           left: pos.x,
           top: pos.y,
-          width: 40,
-          height: 40,
+          width: hovering ? 52 : 40,
+          height: hovering ? 52 : 40,
           transform: "translate(-50%, -50%)",
           border: "1px solid rgba(0,240,255,0.35)",
         }}
@@ -59,32 +57,53 @@ function CustomCursor() {
   );
 }
 
-const Portfolio = () => {
-  return (
-    <div className="relative">
-      <CustomCursor />
-      <Nav />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Certifications />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
-  );
-};
-
 function App() {
+  const [activeTab, setActiveTab] = useState(() => {
+    const hash = window.location.hash.replace("#", "");
+    const tabs = ["overview", "projects", "skills", "credentials", "contact"];
+    return tabs.includes(hash) ? hash : "overview";
+  });
+
+  useEffect(() => {
+    window.location.hash = activeTab;
+  }, [activeTab]);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      const tabs = ["overview", "projects", "skills", "credentials", "contact"];
+      if (tabs.includes(hash)) {
+        setActiveTab(hash);
+      }
+    };
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case "overview":
+        return <Overview />;
+      case "projects":
+        return <Projects />;
+      case "skills":
+        return <Skills />;
+
+      case "credentials":
+        return <Certifications />;
+      case "contact":
+        return <Contact />;
+      default:
+        return <Overview />;
+    }
+  };
+
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Portfolio />} />
-        </Routes>
-      </BrowserRouter>
+    <div className="App selection:bg-cyan-500/20 selection:text-white">
+      <CustomCursor />
+      <DashboardLayout activeTab={activeTab} setActiveTab={setActiveTab}>
+        {renderContent()}
+      </DashboardLayout>
       <Toaster theme="dark" position="bottom-right" richColors />
     </div>
   );
