@@ -13,6 +13,7 @@ import {
   FileText
 } from "lucide-react";
 import { PROFILE } from "../../data/portfolio";
+import VisitorCount from "./VisitorCount";
 
 export default function DashboardLayout({ activeTab, setActiveTab, children }) {
   const [consoleOpen, setConsoleOpen] = useState(false);
@@ -136,6 +137,9 @@ export default function DashboardLayout({ activeTab, setActiveTab, children }) {
               <span>Resume</span>
             </button>
           </div>
+
+          {/* Visitor Counter */}
+          <VisitorCount />
         </div>
       </aside>
 
