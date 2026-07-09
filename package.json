@@ -1,7 +1,7 @@
 {
   "name": "portfolio-root",
   "version": "1.0.0",
-  "description": "Root package for running frontend and backend concurrently",
+  "description": "Clean, minimalistic portfolio project",
   "scripts": {
     "start": "cd frontend && npm start",
     "build": "cd frontend && npm run build",
