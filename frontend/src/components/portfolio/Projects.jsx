@@ -61,11 +61,19 @@ const pipelineChartData = [
   { step: "BI Refresh", duration: 15 },
 ];
 
+const rfmChartData = [
+  { segment: "Champions", customers: 180 },
+  { segment: "Loyal", customers: 140 },
+  { segment: "Potential", customers: 96 },
+  { segment: "At Risk", customers: 54 },
+  { segment: "Lost", customers: 22 },
+];
+
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const filters = ["All", "SQL", "Python", "Power BI", "Machine Learning", "Statistics"];
+  const filters = ["All", "SQL", "Python"];
 
   const filteredProjects = PROJECTS.filter((p) => {
     if (activeFilter === "All") return true;
@@ -166,6 +174,21 @@ export default function Projects() {
                 <YAxis stroke="#71717a" tick={{ fontSize: 9 }} />
                 <Tooltip contentStyle={tooltipStyle} />
                 <Bar dataKey="duration" fill="#3b82f6" radius={[2, 2, 0, 0]} name="Processing Time (s)" />
+              </ReBarChart>
+            </ResponsiveContainer>
+          </div>
+        );
+      case "Retail RFM Analysis":
+        return (
+          <div className="h-48 w-full bg-black/25 p-3 rounded-lg border border-[#27272a] font-mono text-[10px]">
+            <span className="text-zinc-500 block mb-2 uppercase tracking-widest text-[9px]">Customer Segments by RFM Score</span>
+            <ResponsiveContainer width="100%" height="90%">
+              <ReBarChart data={rfmChartData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
+                <XAxis dataKey="segment" stroke="#71717a" tick={{ fontSize: 8 }} />
+                <YAxis stroke="#71717a" tick={{ fontSize: 9 }} />
+                <Tooltip contentStyle={tooltipStyle} />
+                <Bar dataKey="customers" fill="#3b82f6" radius={[2, 2, 0, 0]} name="Customers" />
               </ReBarChart>
             </ResponsiveContainer>
           </div>
